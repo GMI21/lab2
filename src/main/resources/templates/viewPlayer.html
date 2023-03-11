@@ -5,10 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-<p th:text=" ${name} " />
-
-<form action="#" th:action="@{/EditPlayer}" th:object="${CurrentPLayer}" method="post">
-    <input type="text" th:field="*{name}"/>
+<form action="/admin/deletePlayer">
+    <ul>
+        <li th:each="feat : ${players}">
+            <tr>
+                <td><input type="checkbox" th:field="*{players}" th:value="${player.id}" /></td>
+                <td><a href="admin/editPlayer"><label th:text="${player.name}" /></a></td>
+            </tr>
+        </li>
+    </ul>
 </form>
+<input type = "submit" value="Удалить игрока" />
 </body>
 </html>

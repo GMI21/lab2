@@ -14,13 +14,6 @@ public class AdminController {
     @Autowired
     PlayerRepository PlayerBase;
 
-    /*@GetMapping("/admin/EditPlayer")
-    public String editPlayer(@RequestParam(name = "name", required = true) String name, Model model) {
-
-        model.addAttribute("name", name);
-        return "Output.html";
-    }*/
-
     @GetMapping("/admin/AddPlayer")
     public String addPlayer(@RequestParam(name = "name", required = false) String name, Model model) {
         Player P1 = new Player();
@@ -28,15 +21,21 @@ public class AdminController {
         PlayerBase.save(P1);
         model.addAttribute("name", name);
         model.addAttribute("id", P1.getId());
-        return "addPlayer.html";
+        return "addPlayerSuccess.html";
 
+    }
+    @GetMapping("/admin/EditPlayer")
+    public String editPlayer(@RequestParam(name = "name", required = true) String name, Model model) {
+
+        model.addAttribute("name", name);
+        return "editPlayer.html";
     }
 
     @GetMapping("/admin/ViewPlayers")
     public String viewPlayers(Model model) {
         Iterable<Player> players = PlayerBase.findAll();
         model.addAttribute("players", players);
-        return "deletePlayer.html";
+        return "viewPlayer.html";
 
     }
 }
