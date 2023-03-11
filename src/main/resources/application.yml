@@ -1,6 +1,12 @@
 spring:
   datasource:
-  url: "jdbc:postgresql://localhost/BasicLogin"
-username: "postgres"
-password: "Base"
-#characterEncoding: cp1251
+    url: "jdbc:postgresql://localhost/dstu"
+    username: "postgres"
+    password: "12345"
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
