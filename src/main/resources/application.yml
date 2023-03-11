@@ -1,0 +1,6 @@
+spring:
+  datasource:
+  url: "jdbc:postgresql://localhost/BasicLogin"
+username: "postgres"
+password: "Base"
+#characterEncoding: cp1251

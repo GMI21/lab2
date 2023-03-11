@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form action="/admin/deletePlayer">
+<ul>
+  <li th:each="feat : ${players}">
+    <tr>
+    <td><input type="checkbox" th:field="*{players}" th:value="${player.id}" /></td>
+    <td><a href="admin/editPlayer"><label th:text="${player.name}" /></a></td>
+    </tr>
+  </li>
+</ul>
+</form>
+<input type = "submit" value="Удалить игрока" />
+</body>
+</html>
