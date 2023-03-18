@@ -2,13 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Player</title>
 </head>
 <body>
-<p th:text=" ${name} " />
+<div align="center">
+    <h1>Edit</h1>
+    <br/>
+    <form action="#" th:action="@{/save}" th:object="${player}" method="get">
+        <td>Player Name:</td>
+        <td><input type="text" th:field="*{name}" /></td>
+        <td><button type="submit">Save</button></td>
+    </form>
+</div>
 
-<form action="#" th:action="@{/EditPlayer}" th:object="${CurrentPLayer}" method="get">
-    <input type="text" th:field="*{name}"/>
 </form>
 </body>
 </html>

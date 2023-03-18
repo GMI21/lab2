@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>List</title>
 </head>
 <body>
-<form action="/admin/deletePlayer">
-    <ul>
-        <li th:each="feat : ${players}">
-            <tr>
-                <td><input type="checkbox" th:field="*{players}" th:value="${player.id}" /></td>
-                <td><a href="admin/editPlayer"><label th:text="${player.name}" /></a></td>
-            </tr>
-        </li>
-    </ul>
-</form>
-<input type = "submit" value="Удалить игрока" />
+<div align="center">
+  <a href="/new"> Добавить игрока </a>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="player : ${listPlayers}">
+      <td th:text="${player.id}">ID</td>
+      <td th:text="${player.name}">Name</td>
+      <td>
+        <a th:href="@{'/EditPlayer/' + ${player.id}}">Edit</a>
+        &nbsp;&nbsp;
+        <a th:href="@{'/DeletePlayer/' + ${player.id}}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 </body>
+
 </html>
