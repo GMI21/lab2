@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Weapon</title>
+</head>
+<body>
+<div align="center">
+    <h1>Edit weapon form</h1>
+    <br/>
+    <form action="#" th:action="@{/saveWeapon}" th:object="${weapon}" method="get">
+        <table>
+            <tr>
+                <td> Name:</td>
+                <td><input type="hidden" th:field="*{id}"/></td>
+                <td><input type="text" th:field="*{name}"/></td>
+                <td>
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+        </table>
+        <table border="1">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="player : ${allPlayers}">
+                <td>
+                    <input type="checkbox" th:field="*{players}" th:value="${player.id}"/>
+                </td>
+                <td>
+                    <label th:for="${#ids.next('players')}" th:text="${player.name}"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+</form>
+</body>
+</html>

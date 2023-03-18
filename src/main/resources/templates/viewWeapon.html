@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<div align="center">
+    <a href="/newWeapon"> Добавить оружие </a>
+
+    <form action="#" th:action="@{/DeleteWeapons}" th:object="${deleteWeaponForm}" method="get">
+    <table border="1">
+        <thead>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="weapon : ${listWeapons}">
+
+            <td>
+            <input type="checkbox" th:field="*{weapons}" th:value="${weapon.id}" />
+            </td>>
+
+            <td th:text="${weapon.id}">ID</td>
+            <td>
+                <label th:for="${#ids.next('weapons')}"  th:text="${weapon.name}"/>
+            </td>
+            <td>
+                <a th:href="@{'/EditWeapon/' + ${weapon.id}}">Edit</a>
+                &nbsp;&nbsp;
+                <a th:href="@{'/DeleteWeapon/' + ${weapon.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+        <input type="submit" name="submitButton" value="Удалить выделенное" />
+    </form>
+</div>
+</body>
+
+</html>
